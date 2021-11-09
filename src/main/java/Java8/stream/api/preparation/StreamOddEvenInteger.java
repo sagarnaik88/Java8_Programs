@@ -1,4 +1,4 @@
-package Java8.preparation;
+package Java8.stream.api.preparation;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,9 +13,9 @@ public class StreamOddEvenInteger {
 	public static void main(String[] args) {
 		List<Integer> intList = Arrays.asList(10,15,8,49,25,98,32);
 		intList.stream()
-			.filter(n -> n%2 == 0)
-			.forEach(System.out::println);
-
+			.filter(n -> n%2 == 1)
+			//.forEach(System.out::println);
+			.forEach(n-> System.out.println(n));
 	}
 
 }
