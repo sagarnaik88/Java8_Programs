@@ -105,6 +105,17 @@ public class EmployeeList {
 		System.out.println("14. To Get Max salary of Employee in each department?");
 		toGetMaxSalaryOfEachDepartment(employeeList);
 		System.out.println("\n");
+		
+		// 15. Employee Query
+		System.out.println("14. To Get all employee having age >25?");
+		toGetAllEmployeeAge(employeeList);
+		System.out.println("\n");
+	}
+
+	private static void toGetAllEmployeeAge(List<Employee> employeeList) {
+		
+		employeeList.stream().filter(e -> e.getAge() > 25).forEach(System.out :: println);
+		
 	}
 
 	private static void toGetMaxSalaryOfEachDepartment(List<Employee> employeeList) {
