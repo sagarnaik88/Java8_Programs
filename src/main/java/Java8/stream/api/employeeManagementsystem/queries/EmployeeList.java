@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class EmployeeList {
@@ -98,6 +100,32 @@ public class EmployeeList {
 		System.out.println("13. List down the names of all employees in each department?");
 		toGetAllEmployeeDepartmentWise(employeeList);
 		System.out.println("\n");
+		
+		// 14. Employee Query
+		System.out.println("14. To Get Max salary of Employee in each department?");
+		toGetMaxSalaryOfEachDepartment(employeeList);
+		System.out.println("\n");
+	}
+
+	private static void toGetMaxSalaryOfEachDepartment(List<Employee> employeeList) {
+		Map<String, Optional<Employee>> collect = employeeList.stream().collect(Collectors.groupingBy(Employee :: getDepartment, Collectors.maxBy(Comparator.comparing(Employee :: getSalary))));
+		//System.out.println(collect);
+		
+		Set<Entry<String, Optional<Employee>>> entrySet = collect.entrySet();
+        
+		for (Entry<String, Optional<Employee>> entry : entrySet) 
+		{
+		    System.out.println("--------------------------------------");
+		             
+		    System.out.println("Employees In "+entry.getKey() + " : ");
+		             
+		    System.out.println("--------------------------------------");
+		             
+		    Optional<Employee> list = entry.getValue();
+		             
+		    list.stream().forEach(System.out::println);
+		}
+		
 	}
 
 	private static void toGetAllEmployeeDepartmentWise(List<Employee> employeeList) {
